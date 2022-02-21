@@ -19,7 +19,8 @@ const UpdateNumberScreen = () => {
         inputContainerStyle={{ paddingLeft: '3%', borderColor: 'rgba(0,0,0,0.6)', borderWidth: 1, borderBottomWidth: 1, borderRadius: 10 }}
         containerStyle={{ width: '90%' }}
         value={number1}
-        onChangeText={(e) => { setNumber1(parseInt(e).toString()) }}
+        keyboardType='numeric'
+        onChangeText={(e) => {  setNumber1(e) }}
       />
 
       <Input
@@ -29,7 +30,8 @@ const UpdateNumberScreen = () => {
         inputContainerStyle={{ paddingLeft: '3%', borderColor: 'rgba(0,0,0,0.6)', borderWidth: 1, borderBottomWidth: 1, borderRadius: 10 }}
         containerStyle={{ width: '90%' }}
         value={number2}
-        onChangeText={(e) => { setNumber2(parseInt(e).toString()) }}
+        keyboardType='numeric'
+        onChangeText={(e) => { setNumber2(e) }}
       />
 
       <View style={styles.buttonContainer}>
