@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const LoadingScreen = () => {
   return (
     <View style={styles.mainContainer}>
-      <Text>Loading...</Text>
+      <Text style={styles.LoadingText}>Loading...</Text>
     </View>
   )
 }
@@ -13,9 +13,12 @@ const LoadingScreen = () => {
 export default LoadingScreen
 
 const styles = StyleSheet.create({
-    mainContainer: {
-        flex:1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
+  mainContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  LoadingText: {
+    fontSize: 20
+  }
 })
