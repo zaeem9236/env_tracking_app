@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
 
   },
   topRow_buttonText: {
-    fontSize: 19,
+    fontSize: 18,
     color: 'rgba(255, 0, 0, 0.7)'
   },
   screenSelectRow: {
