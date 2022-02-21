@@ -22,7 +22,9 @@ const StatusScreen = () => {
 
             <View style={styles.vibrationContainer}>
                 <View>
-                    <Text>Vibration Status :</Text>
+                    <Text style={styles.vibrationText}>Vibration Status:
+                        <Text style={styles.vibrationAlarmText(true)}>   { true? 'alarm detected !' : 'no alarm' } </Text>
+                    </Text>
                 </View>
             </View>
         </View>
@@ -63,10 +65,21 @@ const styles = StyleSheet.create({
         color: 'red'
     },
     vibrationContainer: {
-        //    backgroundColor: 'green',
-        flex: 0.6,
+        // backgroundColor: 'green',
+        flex: 0.2,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'flex-start',
+        paddingLeft: '5%'
+    },
+    vibrationText: {
+        fontSize: 20,
+        color: 'rgba(1, 87, 155, 0.8)'
+    },
+    vibrationAlarmText: function (status) {
+        return {
+            fontSize: 20,
+            color: status?  '#d32f2f' : '#4caf50'
+        }
     }
 
 })
