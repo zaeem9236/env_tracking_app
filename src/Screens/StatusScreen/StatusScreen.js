@@ -1,21 +1,23 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react';
-import { Icon } from 'react-native-elements'
+import { useSelector, useDispatch } from 'react-redux';
+import { getDeviceData } from '../../Redux/Slices/deviceDataSlice';
 
 const StatusScreen = () => {
+    let deviceData = useSelector(getDeviceData);
     return (
         <View style={styles.mainContainer}>
             <View style={styles.environmentContainer}>
                 <View style={styles.environmentView} >
                     <Text style={styles.environmentView_text}>Temperature</Text>
-                    <Text style={styles.environmentView_data}>{`${32} °C`}</Text>
-                    <Text style={styles.environmentView_error}>High temp !</Text>
+                    <Text style={styles.environmentView_data}>{`${deviceData.temperature} °C`}</Text>
+                    <Text style={styles.environmentView_error}>{deviceData.temperature < 30 ? 'Low temperature !' : deviceData.temperature > 40 ? 'High temperature !' : null}</Text>
                 </View>
 
                 <View style={styles.environmentView}>
                     <Text style={styles.environmentView_text}>Humidity</Text>
-                    <Text style={styles.environmentView_data}>{`${63} %`}</Text>
-                    <Text style={styles.environmentView_error}>Low humidity !</Text>
+                    <Text style={styles.environmentView_data}>{`${deviceData.humidity} %`}</Text>
+                    <Text style={styles.environmentView_error}>{deviceData.humidity < 40 ? 'Low humidity !' : deviceData.humidity > 80 ? 'High humidity !' : null}</Text>
 
                 </View>
             </View>
@@ -23,8 +25,9 @@ const StatusScreen = () => {
             <View style={styles.vibrationContainer}>
                 <View>
                     <Text style={styles.vibrationText}>Vibration Status:
-                        <Text style={styles.vibrationAlarmText(true)}>   { true? 'alarm detected !' : 'no alarm' } </Text>
+                        <Text style={styles.vibrationAlarmText((deviceData.vibration == '1') ? '1' : '0')}>   {(deviceData.vibration == '0') ? 'no alarm' : 'alarm detected !'} </Text>
                     </Text>
+
                 </View>
             </View>
         </View>
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
     vibrationAlarmText: function (status) {
         return {
             fontSize: 20,
-            color: status?  '#d32f2f' : '#4caf50'
+            color: status == '0' ? '#4caf50' : '#d32f2f'
         }
     }
 

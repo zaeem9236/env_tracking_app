@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { ButtonGroup } from 'react-native-elements'
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserDetails } from '../../Redux/Slices/userDetailsSlice';
+import { updateDeviceData } from '../../Redux/Slices/deviceDataSlice';
 import StatusScreen from '../StatusScreen/StatusScreen';
 import UpdateNumberScreen from '../UpdateNumberScreen/UpdateNumberScreen';
+import { getDeviceData } from '../../Firebase/functions/getDeviceData';
 import { logOut } from '../../Firebase/functions/logOut';
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,6 +18,11 @@ const HomeScreen = () => {
   let [selectedIndex, setSelectedIndex] = useState(0)
   let userInfo = useSelector(getUserDetails);
   let dispatch = useDispatch();
+
+  useEffect(() => {
+    getDeviceData(dispatch, updateDeviceData)
+  }, [])
+  
   return (
     <View style={styles.mainContainer(windowHeight)}>
       <View style={styles.topDashboardContainer}>
