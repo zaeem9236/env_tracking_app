@@ -1,37 +1,39 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { getDeviceData } from '../../Redux/Slices/deviceDataSlice';
 import { Input } from 'react-native-elements';
+import { updateNumber } from '../../Firebase/functions/updateNumber';
 
 
 const UpdateNumberScreen = () => {
+  let deviceData = useSelector(getDeviceData);
+  let [number1, setNumber1] = useState(`${deviceData.number1}`);
+  let [number2, setNumber2] = useState(`${deviceData.number2}`);
   return (
     <View style={styles.mainContainer}>
       <Input
-
         label='Primary SMS number'
         labelStyle={{ paddingBottom: '3%', paddingLeft: '1%' }}
         placeholder='123*******'
         inputContainerStyle={{ paddingLeft: '3%', borderColor: 'rgba(0,0,0,0.6)', borderWidth: 1, borderBottomWidth: 1, borderRadius: 10 }}
         containerStyle={{ width: '90%' }}
-        value=''
-      // onChangeText={}
-      // errorMessage={}
+        value={number1}
+        onChangeText={(e) => { setNumber1(parseInt(e).toString()) }}
       />
 
       <Input
-
         label='Secondary SMS number'
         labelStyle={{ paddingBottom: '3%', paddingLeft: '1%' }}
         placeholder='678*******'
         inputContainerStyle={{ paddingLeft: '3%', borderColor: 'rgba(0,0,0,0.6)', borderWidth: 1, borderBottomWidth: 1, borderRadius: 10 }}
         containerStyle={{ width: '90%' }}
-        value=''
-      // onChangeText={}
-      // errorMessage={}
+        value={number2}
+        onChangeText={(e) => { setNumber2(parseInt(e).toString()) }}
       />
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.loginButton} onPress={() => { nextScreen() }}>
+        <TouchableOpacity style={styles.loginButton} onPress={() => { updateNumber(number1, number2) }}>
           <Text style={styles.loginButtonText}>Update</Text>
         </TouchableOpacity>
       </View>
