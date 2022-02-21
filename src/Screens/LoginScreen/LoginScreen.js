@@ -32,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
     return (
         <Formik initialValues={credentials} validationSchema={validationSchema} validateOnChange={true}>
             {({ values, handleChange, errors, validateForm }) => {
-                // const { email, password } = values;
+                const { email, password } = values;
                 return (
                     <View enabled={false} style={styles.mainContainer}>
                         <View style={keyboardOpen ? styles.bannerContainer_hide : styles.bannerContainer} >

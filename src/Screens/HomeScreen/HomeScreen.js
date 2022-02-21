@@ -6,10 +6,13 @@ import { getUserDetails } from '../../Redux/Slices/userDetailsSlice';
 import StatusScreen from '../StatusScreen/StatusScreen';
 import UpdateNumberScreen from '../UpdateNumberScreen/UpdateNumberScreen';
 import { logOut } from '../../Firebase/functions/logOut';
+import { useNavigation } from '@react-navigation/native';
+
 import { Dimensions } from 'react-native';
 const windowHeight = Dimensions.get('window').height;
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
+  const navigation = useNavigation();
   let [selectedIndex, setSelectedIndex] = useState(0)
   let userInfo = useSelector(getUserDetails);
   let dispatch = useDispatch();
@@ -18,7 +21,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.topDashboardContainer}>
         <View style={styles.topRow}>
           <Text style={styles.topRow_heading}>{`Welcome ${userInfo.name}`}</Text>
-          <TouchableOpacity style={styles.topRow_button} onPress={() => { navigation.navigate('RegisterScreen') }}>
+          <TouchableOpacity style={styles.topRow_button} onPress={() => { logOut(navigation) }}>
             <Text style={styles.topRow_buttonText}>Logout</Text>
           </TouchableOpacity>
         </View>
