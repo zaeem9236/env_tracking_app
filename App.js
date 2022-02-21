@@ -1,20 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { Provider } from 'react-redux';
+import store from './src/Redux/Store/Store';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
+import LoginScreen from './src/Screens/LoginScreen/LoginScreen'
+import RegisterScreen from './src/Screens/RegisterScreen/RegisterScreen';
+import MainScreen from './src/Screens/MainPage/MainScreen';
+import HomeScreen from './src/Screens/HomeScreen/HomeScreen';
+import LoadingScreen from './src/Screens/LoadingScreen/LoadingScreen';
+
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Setting a timer', 'AsyncStorage has been']);
+// warnings to ignore
+
+
+
+const App = () => {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='LoginScreen'>
+          <Stack.Screen options={{ headerShown: false }} name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen options={{ headerShown: false }} name="RegisterScreen" component={RegisterScreen} />
+          <Stack.Screen options={{ headerShown: false }} name="MainScreen" component={MainScreen} />
+          <Stack.Screen options={{ headerShown: false }} name="LoadingScreen" component={LoadingScreen} />
+          <Stack.Screen options={{ headerShown: false }} name="HomeScreen" component={HomeScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
+
