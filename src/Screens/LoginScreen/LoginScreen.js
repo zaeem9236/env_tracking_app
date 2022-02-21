@@ -32,12 +32,12 @@ const LoginScreen = ({ navigation }) => {
     return (
         <Formik initialValues={credentials} validationSchema={validationSchema} validateOnChange={true}>
             {({ values, handleChange, errors, validateForm }) => {
-                const { email, password } = values;
+                // const { email, password } = values;
                 return (
                     <View enabled={false} style={styles.mainContainer}>
                         <View style={keyboardOpen ? styles.bannerContainer_hide : styles.bannerContainer} >
                             <Image style={styles.bannerIcon} source={require('../../../assets/banner_icon.png')} />
-                            <Text style={styles.bannerText}> Banner Container </Text>
+                            <Text style={styles.bannerText}> Tracking App </Text>
                         </View>
                         <View style={styles.loginContainer(keyboardOpen)}>
                             <View style={styles.headingContainer}>

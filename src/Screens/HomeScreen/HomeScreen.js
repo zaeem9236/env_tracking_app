@@ -2,21 +2,23 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { ButtonGroup } from 'react-native-elements'
 import { useSelector, useDispatch } from 'react-redux';
-import { countUp, countDown, getCount } from '../../Redux/Slices/CountDownSlice';
-
+import { getUserDetails } from '../../Redux/Slices/userDetailsSlice';
+import StatusScreen from '../StatusScreen/StatusScreen';
+import UpdateNumberScreen from '../UpdateNumberScreen/UpdateNumberScreen';
 import { logOut } from '../../Firebase/functions/logOut';
 import { Dimensions } from 'react-native';
 const windowHeight = Dimensions.get('window').height;
 
 const HomeScreen = ({ navigation }) => {
   let [selectedIndex, setSelectedIndex] = useState(0)
+  let userInfo = useSelector(getUserDetails);
   let dispatch = useDispatch();
   return (
     <View style={styles.mainContainer(windowHeight)}>
       <View style={styles.topDashboardContainer}>
         <View style={styles.topRow}>
-          <Text style={styles.topRow_heading}>{`Welcome user`}</Text>
-          <TouchableOpacity style={styles.topRow_button} onPress={() => { logOut(navigation) }}>
+          <Text style={styles.topRow_heading}>{`Welcome ${userInfo.name}`}</Text>
+          <TouchableOpacity style={styles.topRow_button} onPress={() => { navigation.navigate('RegisterScreen') }}>
             <Text style={styles.topRow_buttonText}>Logout</Text>
           </TouchableOpacity>
         </View>
@@ -34,13 +36,11 @@ const HomeScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.appScreen}>
-        <View style={styles.environmentContainer}>
-          <View style={styles.environmentView1}>
-            <Text>temp</Text>
-          </View>
-          <View style={styles.environmentView2}><Text>humi</Text></View>
-        </View>
+        
+        {(selectedIndex === 0) ? <StatusScreen /> : <UpdateNumberScreen />}
+
       </View>
+
 
     </View>
   )
@@ -83,21 +83,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   appScreen: {
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
     flex: 0.8,
-  },
-  environmentContainer: {
-    backgroundColor: 'pink',
-    flex: 0.4,
-    flexDirection: 'row'
-  },
-  environmentView1: {
-    backgroundColor: 'yellow',
-    flex: 0.5
-  },
-  environmentView2: {
-    backgroundColor: 'green',
-    flex: 0.5
   }
 
 })
