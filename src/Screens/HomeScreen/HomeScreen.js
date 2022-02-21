@@ -16,7 +16,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.topDashboardContainer}>
         <View style={styles.topRow}>
           <Text style={styles.topRow_heading}>{`Welcome user`}</Text>
-          <TouchableOpacity style={styles.topRow_button}>
+          <TouchableOpacity style={styles.topRow_button} onPress={() => { logOut(navigation) }}>
             <Text style={styles.topRow_buttonText}>Logout</Text>
           </TouchableOpacity>
         </View>
@@ -31,10 +31,16 @@ const HomeScreen = ({ navigation }) => {
             selectedButtonStyle={{ backgroundColor: 'rgb(1, 87, 155)' }}
           />
         </View>
-
       </View>
 
-      <Text>sdfdsfdsfds</Text>
+      <View style={styles.appScreen}>
+        <View style={styles.environmentContainer}>
+          <View style={styles.environmentView1}>
+            <Text>temp</Text>
+          </View>
+          <View style={styles.environmentView2}><Text>humi</Text></View>
+        </View>
+      </View>
 
     </View>
   )
@@ -75,6 +81,23 @@ const styles = StyleSheet.create({
     // backgroundColor: 'yellow',
     flex: 0.5,
     justifyContent: 'flex-end',
+  },
+  appScreen: {
+    backgroundColor: 'red',
+    flex: 0.8,
+  },
+  environmentContainer: {
+    backgroundColor: 'pink',
+    flex: 0.4,
+    flexDirection: 'row'
+  },
+  environmentView1: {
+    backgroundColor: 'yellow',
+    flex: 0.5
+  },
+  environmentView2: {
+    backgroundColor: 'green',
+    flex: 0.5
   }
 
 })
