@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Tracking App",
-    "slug": "TrackingApp",
+    "slug": "trackingapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/app_icon.png",
@@ -17,9 +17,13 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.zaeem123.trackingapp",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.zaeem123.trackingapp",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
