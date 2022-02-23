@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { useDispatch } from 'react-redux';
+import { updateUserDetails } from '../../Redux/Slices/userDetailsSlice';
 import { Input, Icon } from 'react-native-elements';
 import { registerUser } from '../../Firebase/functions/registerUser';
 import { Dimensions } from 'react-native';
@@ -7,6 +9,8 @@ const windowHeight = Dimensions.get('window').height;
 
 
 const RegisterTemplate = ({ navigation, registerScreen, setRegisterScreen, formData, value, handleChange, fieldToUpdate, errorMessage, validateField, imgSrc, headingText1, headingText2, inputLabel, inputPlaceholder }) => {
+    let dispatch = useDispatch()
+
 
     function nextScreen() {
         validateField(fieldToUpdate);
@@ -14,7 +18,7 @@ const RegisterTemplate = ({ navigation, registerScreen, setRegisterScreen, formD
             if (registerScreen < 4)
                 setRegisterScreen(++registerScreen)
             else
-                registerUser(formData, navigation);
+                registerUser(formData, navigation, dispatch, updateUserDetails);
         }
     }
 
