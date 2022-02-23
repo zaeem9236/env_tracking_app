@@ -5207,6 +5207,11 @@ react-is@^17.0.1, react-is@^17.0.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-alert-notification@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/react-native-alert-notification/-/react-native-alert-notification-0.1.13.tgz#b366a5da2b6298dd98032c08d0531fc9b2452703"
+  integrity sha512-zTZqyE3unCO9Ugly5RfVsFOtB+yq+9yp0NYvdJgMDPFEIEWB7Hi/ZYw2KG4XEz6wLdRBDFlNbNr/fwBMa36uEQ==
+
 react-native-codegen@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.6.tgz#b3173faa879cf71bfade8d030f9c4698388f6909"
