@@ -79,7 +79,6 @@ const LoginScreen = ({ navigation }) => {
                     </View>
                 )
             }}
-
         </Formik>
     )
 }

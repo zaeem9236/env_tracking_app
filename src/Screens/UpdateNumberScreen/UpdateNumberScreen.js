@@ -10,6 +10,7 @@ const UpdateNumberScreen = () => {
   let deviceData = useSelector(getDeviceData);
   let [number1, setNumber1] = useState(`${deviceData.number1}`);
   let [number2, setNumber2] = useState(`${deviceData.number2}`);
+  
   return (
     <View style={styles.mainContainer}>
       <Input
