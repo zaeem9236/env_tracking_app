@@ -9,6 +9,8 @@ export const deviceDataSlice = createSlice({
             vibration : '0',
             number1 : '',
             number2 : '',
+            lat : 33.52142875797687,
+            lon: 73.1588459122573
         },
     },
     reducers: {
