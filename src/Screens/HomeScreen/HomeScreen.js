@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Vibration } from 'react-native'
 import { ButtonGroup } from 'react-native-elements'
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserDetails } from '../../Redux/Slices/userDetailsSlice';
@@ -22,7 +22,7 @@ const HomeScreen = () => {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    getDeviceData(dispatch, updateDeviceData, showNotification)
+    getDeviceData(dispatch, updateDeviceData, showNotification, Vibration)
   }, [])
 
   return (
