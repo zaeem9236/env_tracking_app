@@ -7,6 +7,7 @@ import { updateDeviceData } from '../../Redux/Slices/deviceDataSlice';
 import StatusScreen from '../StatusScreen/StatusScreen';
 import UpdateNumberScreen from '../UpdateNumberScreen/UpdateNumberScreen';
 import MapScreen from '../MapScreen/MapScreen';
+import ThresholdScreen from '../ThresholdScreen/ThresholdScreen';
 import { getDeviceData } from '../../Firebase/functions/getDeviceData';
 import { logOut } from '../../Firebase/functions/logOut';
 import { useNavigation } from '@react-navigation/native';
@@ -37,7 +38,7 @@ const HomeScreen = () => {
           </View>
           <View style={styles.screenSelectRow}>
             <ButtonGroup
-              buttons={['Status', 'Update Number', 'Gps']}
+              buttons={['Status', 'Number', 'Gps', 'Threshold']}
               selectedIndex={selectedIndex}
               onPress={(value) => {
                 setSelectedIndex(value);
@@ -48,7 +49,7 @@ const HomeScreen = () => {
           </View>
         </View>
         <View style={styles.appScreen}>
-          {(selectedIndex === 0) ? <StatusScreen /> : (selectedIndex === 1) ? <UpdateNumberScreen /> : <MapScreen />}
+          {(selectedIndex === 0) ? <StatusScreen /> : (selectedIndex === 1) ? <UpdateNumberScreen /> : (selectedIndex === 2) ? <MapScreen /> : <ThresholdScreen /> }
         </View>
       </View>
     </Root>

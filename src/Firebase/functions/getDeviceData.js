@@ -8,6 +8,6 @@ export const getDeviceData = (dispatch, updateDeviceData, showNotification, Vibr
         dispatch(updateDeviceData(data))
         if (temperature < 30 || temperature > 40 || humidity < 40 || humidity > 80 || vibration == 1)
             showNotification(temperature, humidity, vibration)
-            Vibration.vibrate(80)
+            // Vibration.vibrate(80)
     });
 }
