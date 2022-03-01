@@ -11,13 +11,13 @@ const StatusScreen = () => {
                 <View style={styles.environmentView} >
                     <Text style={styles.environmentView_text}>Temperature</Text>
                     <Text style={styles.environmentView_data}>{`${deviceData.temperature} °C`}</Text>
-                    <Text style={styles.environmentView_error}>{deviceData.temperature < 30 ? 'Low temperature !' : deviceData.temperature > 40 ? 'High temperature !' : null}</Text>
+                    <Text style={styles.environmentView_error}>{deviceData.temperature <= deviceData.low_temp_threshold ? 'Low temperature !' : deviceData.temperature >= deviceData.high_temp_threshold ? 'High temperature !' : null}</Text>
                 </View>
 
                 <View style={styles.environmentView}>
                     <Text style={styles.environmentView_text}>Humidity</Text>
                     <Text style={styles.environmentView_data}>{`${deviceData.humidity} %`}</Text>
-                    <Text style={styles.environmentView_error}>{deviceData.humidity < 40 ? 'Low humidity !' : deviceData.humidity > 80 ? 'High humidity !' : null}</Text>
+                    <Text style={styles.environmentView_error}>{deviceData.humidity <= deviceData.low_humi_threshold ? 'Low humidity !' : deviceData.humidity >= deviceData.high_humi_threshold ? 'High humidity !' : null}</Text>
 
                 </View>
             </View>

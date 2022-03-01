@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     sliderContainer:{
         // backgroundColor : 'purple',
         flex: 0.2,
-        width: '75%',
+        width: '80%',
         justifyContent: 'center'
     }
 })
