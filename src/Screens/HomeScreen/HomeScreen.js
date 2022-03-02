@@ -24,6 +24,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     getDeviceData(dispatch, updateDeviceData, showNotification, Vibration)
+    // run set interval in above function to pass latest values
   }, [])
 
   return (
