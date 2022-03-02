@@ -24,7 +24,6 @@ const HomeScreen = () => {
 
   useEffect(() => {
     getDeviceData(dispatch, updateDeviceData, showNotification, Vibration)
-    // run set interval in above function to pass latest values
   }, [])
 
   return (
@@ -100,12 +99,12 @@ const styles = StyleSheet.create({
 
 })
 
-function showNotification(temperature, humidity, vibration) {
+function showNotification(temperature, humidity, vibration, high_temp_threshold, low_temp_threshold, high_humi_threshold, low_humi_threshold) {
   Toast.show({
     autoClose: 5000,
     type: ALERT_TYPE.WARNING,
     title: 'Notification',
-    textBody: `${temperature > 40 ? 'High temperature !\r\n' : temperature < 30 ? 'Low temperature !\r\n' : ''}${humidity > 80 ? 'High humidity !\r\n' : humidity < 40 ? 'Low humidity !\r\n' : ''}${vibration == 1 ? 'Vibration detected !' : ''}`,
+    textBody: `${temperature >= high_temp_threshold ? 'High temperature !\r\n' : temperature <= low_temp_threshold ? 'Low temperature !\r\n' : ''}${humidity >= high_humi_threshold ? 'High humidity !\r\n' : humidity <= low_humi_threshold ? 'Low humidity !\r\n' : ''}${vibration == 1 ? 'Vibration detected !' : ''}`,
     onPress: () => { Toast.hide() }
   })
 }
