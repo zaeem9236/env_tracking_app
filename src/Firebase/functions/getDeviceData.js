@@ -7,13 +7,16 @@ export const getDeviceData = (dispatch, updateDeviceData, showNotification, Vibr
 
     onValue(ref(db, `Data/`), (snapshot) => {
         const data = snapshot.val();
-        const { temperature, humidity, vibration, high_temp_threshold, low_temp_threshold, high_humi_threshold, low_humi_threshold, alarm } = data;
+        const { temperature, humidity, vibration, high_temp_threshold, low_temp_threshold, high_humi_threshold, low_humi_threshold, alarm, alarm_s } = data;
         dispatch(updateDeviceData(data))
+
 
         if (alarm == 1) {
             if (temperature < low_temp_threshold || temperature > high_temp_threshold || humidity < low_humi_threshold || humidity > high_humi_threshold || vibration == 1) {
-                showNotification(temperature, humidity, vibration, high_temp_threshold, low_temp_threshold, high_humi_threshold, low_humi_threshold)
-                Vibration.vibrate(100)
+                if (alarm_s == 1) {
+                    showNotification(temperature, humidity, vibration, high_temp_threshold, low_temp_threshold, high_humi_threshold, low_humi_threshold)
+                    Vibration.vibrate(100)
+                }
             }
 
             /* set alarm to zero */
@@ -21,6 +24,7 @@ export const getDeviceData = (dispatch, updateDeviceData, showNotification, Vibr
                 alarm: 0
             })
         }
+
 
     });
 }

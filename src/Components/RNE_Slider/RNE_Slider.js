@@ -12,11 +12,11 @@ const RNE_Slider = ({ label, dbKey, value }) => {
         <Text style={styles.valueText}>{value}</Text>
       </View>
       <Slider
-        value={value}
-        onValueChange={(e) => updateThreshold(dbKey, parseInt(e))}
+        value={parseInt(value)}
+        onValueChange={(e) => updateThreshold(dbKey, e)}
         maximumValue={100}
         minimumValue={0}
-        //   step={1}
+          // step={1}
         //   orientation="vertical"
         thumbStyle={{ height: 20, width: 16, backgroundColor: 'transparent' }}
         thumbProps={{

@@ -14,7 +14,8 @@ export const deviceDataSlice = createSlice({
             high_temp_threshold: '',
             low_temp_threshold: '',
             high_humi_threshold: '',
-            low_humi_threshold: ''
+            low_humi_threshold: '',
+            alarm_s: '0'
         },
     },
     reducers: {

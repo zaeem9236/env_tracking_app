@@ -38,7 +38,7 @@ const HomeScreen = () => {
           </View>
           <View style={styles.screenSelectRow}>
             <ButtonGroup
-              buttons={['Status', 'Number', 'Gps', 'Threshold']}
+              buttons={['Status', 'Input', 'Gps']}
               selectedIndex={selectedIndex}
               onPress={(value) => {
                 setSelectedIndex(value);
