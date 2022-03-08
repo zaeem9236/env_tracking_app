@@ -11,29 +11,47 @@ const StatusScreen = () => {
                 <View style={styles.environmentView} >
                     <Text style={styles.environmentView_text}>Temperature</Text>
                     <Text style={styles.environmentView_data}>{`${deviceData.temperature} °F`}</Text>
-                    <Text style={styles.environmentView_error}>{ deviceData.temperature >= deviceData.high_temp_threshold ? 'High temperature !' : null}</Text>
+                    <Text style={styles.environmentView_error}>{deviceData.temperature >= deviceData.high_temp_threshold ? 'High temperature !' : null}</Text>
                 </View>
 
                 <View style={styles.environmentView}>
                     <Text style={styles.environmentView_text}>Humidity</Text>
                     <Text style={styles.environmentView_data}>{`${deviceData.humidity} %`}</Text>
-                    <Text style={styles.environmentView_error}>{ deviceData.humidity >= deviceData.high_humi_threshold ? 'High humidity !' : null}</Text>
+                    <Text style={styles.environmentView_error}>{deviceData.humidity >= deviceData.high_humi_threshold ? 'High humidity !' : null}</Text>
 
                 </View>
             </View>
 
             <View style={styles.vibrationContainer}>
-                <View>
-                    {/* <Text style={styles.vibrationText}>Vibration Status:
-                        <Text style={styles.vibrationAlarmText((deviceData.vibration == '1') ? '1' : '0')}>   {(deviceData.vibration == '0') ? 'no alarm' : 'alarm detected !'} </Text>
-                    </Text> */}
-                       
-                    <Text style={styles.vibrationText}>{`Phone# 1: ${deviceData.number1}`}</Text>
-                    
-                    <Text style={styles.vibrationText}>{`Phone# 2: ${deviceData.number2}`}</Text>
-                    <Text style={styles.vibrationText}>{`High temperature: ${deviceData.high_temp_threshold}`}</Text>
-                    <Text style={styles.vibrationText}>{`High humidity: ${deviceData.high_humi_threshold}`}</Text>
-                    <Text style={styles.vibrationText}>{`Alarm: ${deviceData.alarm_s == 1? 'set call mode' : 'no call mode'}`}</Text>
+                <View style={{ width: '100%' }}>
+                    <Text style={styles.vibrationText}>Vibration Status:
+                        <Text style={styles.vibrationAlarmText((deviceData.vibration == '1') ? '1' : '0')}>   {(deviceData.vibration == '0') ? 'Stationary' : 'Moving!'} </Text>
+                    </Text>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={styles.vibrationText}>{`Phone# 1:`}</Text>
+                        <Text style={styles.vibrationText}>{`${deviceData.number1}`}</Text>
+                    </View>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={styles.vibrationText}>{`Phone# 2:`}</Text>
+                        <Text style={styles.vibrationText}>{`${deviceData.number2}`}</Text>
+                    </View>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={styles.vibrationText}>{`High temperature:`}</Text>
+                        <Text style={styles.vibrationText}>{`${deviceData.high_temp_threshold}`}</Text>
+                    </View>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={styles.vibrationText}>{`High humidity:`}</Text>
+                        <Text style={styles.vibrationText}>{`${deviceData.high_humi_threshold}`}</Text>
+                    </View>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={styles.vibrationText}>{`Alarm:`}</Text>
+                        <Text style={styles.vibrationText}>{`${deviceData.alarm_s == 1 ? 'call mode' : 'no call mode'}`}</Text>
+                    </View>
 
                 </View>
             </View>
@@ -84,6 +102,8 @@ const styles = StyleSheet.create({
     vibrationText: {
         fontSize: 20,
         color: 'rgba(1, 87, 155, 0.8)',
+        paddingBottom: 5,
+        paddingRight: 15
 
     },
     vibrationAlarmText: function (status) {

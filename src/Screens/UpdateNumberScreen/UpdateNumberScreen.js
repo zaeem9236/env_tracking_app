@@ -22,7 +22,7 @@ const UpdateNumberScreen = () => {
       <View style={styles.inputContainer}>
         <Input
           label='Phone# 1'
-          labelStyle={{ paddingBottom: '3%', paddingLeft: '1%' }}
+          labelStyle={{ paddingBottom: '2%', paddingLeft: '1%' }}
           placeholder='123*******'
           inputContainerStyle={{ paddingLeft: '3%', borderColor: 'rgba(0,0,0,0.6)', borderWidth: 1, borderBottomWidth: 1, borderRadius: 10 }}
           containerStyle={{ width: '90%' }}
@@ -35,7 +35,7 @@ const UpdateNumberScreen = () => {
       <View style={styles.inputContainer}>
         <Input
           label='Phone# 2'
-          labelStyle={{ paddingBottom: '3%', paddingLeft: '1%' }}
+          labelStyle={{ paddingBottom: '2%', paddingLeft: '1%' }}
           placeholder='678*******'
           inputContainerStyle={{ paddingLeft: '3%', borderColor: 'rgba(0,0,0,0.6)', borderWidth: 1, borderBottomWidth: 1, borderRadius: 10 }}
           containerStyle={{ width: '90%' }}
@@ -48,7 +48,7 @@ const UpdateNumberScreen = () => {
       <View style={styles.inputContainer}>
         <Input
           label={`High Temperature   (${deviceData.high_temp_threshold})`}
-          labelStyle={{ paddingBottom: '3%', paddingLeft: '1%' }}
+          labelStyle={{ paddingBottom: '2%', paddingLeft: '1%' }}
           placeholder='High Temperature'
           inputContainerStyle={{ paddingLeft: '3%', borderColor: 'rgba(0,0,0,0.6)', borderWidth: 1, borderBottomWidth: 1, borderRadius: 10 }}
           containerStyle={{ width: '90%' }}
@@ -62,7 +62,7 @@ const UpdateNumberScreen = () => {
       <View style={styles.inputContainer}>
         <Input
           label={`High humidity   (${deviceData.high_humi_threshold})`}
-          labelStyle={{ paddingBottom: '3%', paddingLeft: '1%' }}
+          labelStyle={{ paddingBottom: '2%', paddingLeft: '1%' }}
           placeholder='High humidity'
           inputContainerStyle={{ paddingLeft: '3%', borderColor: 'rgba(0,0,0,0.6)', borderWidth: 1, borderBottomWidth: 1, borderRadius: 10 }}
           containerStyle={{ width: '90%' }}
@@ -72,7 +72,7 @@ const UpdateNumberScreen = () => {
         />
       </View>
 
-      <View style={{ flexDirection : 'row',justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ flex: 0.04, flexDirection : 'row',justifyContent: 'center', alignItems: 'center' }}>
         <Text>Alarm_s</Text>
         <Switch
           value={alarm_s == 1 ? true: false}
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     // backgroundColor: 'purple',
-    flex: 0.2,
+    flex: 0.17,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'flex-end'
